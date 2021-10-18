@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>news</title>
+    <style>
+        #news{
+            display:grid;
+            grid-template-columns: 50% 50%;
+            grid-gap:15px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div>
+        <div id="news"> </div>
+    </div>
+    
+
+
+
+    
+</body>
+</html>
+<script>
+
+
+
+
+//https://newsapi.org/v2/top-headlines?country=us&apiKey=API_KEY
+//97801fdeba664c39bc9e59806226b03e    key
+
+ fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=97801fdeba664c39bc9e59806226b03e")
+ .then((res)=>{
+     return res.json();
+
+ })
+ .then((res)=>{
+     console.log("my" , res)
+
+     showNews(res);
+
+    
+
+
+ });
+
+
+ let box = document.getElementById("news");
+
+
+ function showNews(data){
+  
+    data.forEach(function(po){
+        
+        let div= document.createElement('div')
+
+        let title = document.createElement('p')
+        title.innerText= po.title;
+
+
+        div.append(title)
+
+        box.append(div)
+
+
+    });
+
+ }
+
+    
+
+
+ //showNews()
+
+
+
+</script>
